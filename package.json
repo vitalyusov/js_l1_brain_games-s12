@@ -1,0 +1,20 @@
+{
+  "name": "braingames-s12-1",
+  "version": "1.0.0",
+  "description": "Hexlet project #1 Brain Games",
+  "bin":{"brain-even":"bin/brain-even.js"},
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitalyusov/js_l1_brain_games-s12.git"
+  },
+  "author": "Vitaly Usov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitalyusov/js_l1_brain_games-s12/issues"
+  },
+  "homepage": "https://github.com/vitalyusov/js_l1_brain_games-s12#readme"
+}
