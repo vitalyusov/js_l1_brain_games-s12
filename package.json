@@ -2,12 +2,15 @@
   "name": "braingames-s12-1",
   "version": "0.2.0",
   "description": "Hexlet project #1 Brain Games",
-  "bin":{"brain-even":"bin/brain-even.js"},
+  "bin": {
+    "brain-even": "bin/brain-even.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "babel-node",
-    "flow": "flow"
+    "flow": "flow",
+    "eslint": "eslint bin/*.js"
   },
   "repository": {
     "type": "git",
@@ -19,15 +22,20 @@
     "url": "https://github.com/vitalyusov/js_l1_brain_games-s12/issues"
   },
   "homepage": "https://github.com/vitalyusov/js_l1_brain_games-s12#readme",
-
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
-    "babel-preset-env": "*" ,
+    "babel-plugin-syntax-flow": "*",
+    "babel-plugin-transform-flow-strip-types": "*",
+    "babel-preset-env": "*",
     "babel-preset-stage-0": "*",
-    "flow-bin":"*",
+    "eslint": "*",
+    "eslint-config-airbnb": "*",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-flowtype": "*",
+    "eslint-plugin-import": "*",
+    "flow-bin": "*",
     "flow-typed": "*",
-    "babel-plugin-syntax-flow":"*",
-    "babel-plugin-transform-flow-strip-types":"*"
+    "babel-eslint": "*"
   }
 }
