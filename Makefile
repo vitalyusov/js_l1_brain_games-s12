@@ -11,4 +11,4 @@ check:
 	npm run flow
 
 lint:
-	npm run eslint -- bin
+	npm run eslint -- bin, games
