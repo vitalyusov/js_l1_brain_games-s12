@@ -11,4 +11,4 @@ check:
 	npm run flow
 
 lint:
-	npm run eslint
+	npm run eslint -- bin
