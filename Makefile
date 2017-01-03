@@ -6,3 +6,6 @@ run:
 
 publish: 
 	npm publish
+
+check:
+	npm run flow
