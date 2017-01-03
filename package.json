@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel-node": "babel-node"
+    "babel-node": "babel-node",
+    "flow": "flow"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,10 @@
     "babel-cli": "*",
     "babel-core": "*",
     "babel-preset-env": "*" ,
-    "babel-preset-stage-0": "*"
+    "babel-preset-stage-0": "*",
+    "flow-bin":"*",
+    "flow-typed": "*",
+    "babel-plugin-syntax-flow":"*",
+    "babel-plugin-transform-flow-strip-types":"*"
   }
 }
