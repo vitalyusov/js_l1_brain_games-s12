@@ -1,11 +1,12 @@
 {
   "name": "braingames-s12-1",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Hexlet project #1 Brain Games",
   "bin":{"brain-even":"bin/brain-even.js"},
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/vitalyusov/js_l1_brain_games-s12/issues"
   },
-  "homepage": "https://github.com/vitalyusov/js_l1_brain_games-s12#readme"
+  "homepage": "https://github.com/vitalyusov/js_l1_brain_games-s12#readme",
+
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-env": "*" ,
+    "babel-preset-stage-0": "*"
+  }
 }
