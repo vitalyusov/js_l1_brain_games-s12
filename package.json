@@ -1,6 +1,6 @@
 {
   "name": "braingames-s12-1",
-  "version": "0.2.0",
+  "version": "1.0.1",
   "description": "Hexlet project #1 Brain Games",
   "bin": {
     "brain-even": "bin/brain-even.js"
@@ -22,6 +22,9 @@
     "url": "https://github.com/vitalyusov/js_l1_brain_games-s12/issues"
   },
   "homepage": "https://github.com/vitalyusov/js_l1_brain_games-s12#readme",
+  "dependencies": {
+    "readline-sync": "*"
+  },
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
