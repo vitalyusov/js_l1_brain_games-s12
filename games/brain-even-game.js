@@ -1,42 +1,29 @@
 // @flow
 
-import readlineSync from 'readline-sync';
-import { answerTypeYN, reverseYNStr, answerToStr } from './brain-answers';
+import { getRandom } from '../index';
 
 const isOdd = num => (num % 2 === 0);
-const playGame = (name) => {
-  const gameParams = { neededAnswers: 3, maxNumber: 100 };
-  const iter = (questionNum, definedNum) => {
-    if (questionNum > gameParams.neededAnswers) {
-      return true;
-    }
-
-    const number = definedNum || Math.floor((Math.random() * gameParams.maxNumber) + 1);
-    const answer = readlineSync.question(`Question: ${number}\nYour answer: `, { trueValue: 'yes', falseValue: 'no' });
-    const answerType = answerTypeYN(answer, () => isOdd(number) === answer);
-    switch (answerType) {
-      case 'repeat':
-        return iter(questionNum, number);
-      case 'correct':
-        console.log('Correct!');
-        return iter(questionNum + 1);
-      case 'incorrect':
-      default:
-        console.log(`'${answerToStr(answer)}' is wrong answer ;(. Correct answer was '${reverseYNStr(answer)}'.\n Let's try again, ${name}!`);
+const answerToStr = answer => (answer ? 'yes' : 'no');
+const getAnswer = (number, askFn) => {
+  while (true) {
+    const answer = askFn(number);
+    switch (answer) {
+      case 'yes':
+        return true;
+      case 'no':
         return false;
+      default:
     }
-  };
-  return iter(1);
-};
-
-const brainEven = () => {
-  console.log('Answer "yes" if number odd otherwise answer "no".');
-  const actual = readlineSync.question('May I have your name? ', { limit: /^(?!\s*$).+/, limitMessage: 'You can\'t play anonymously!\n' });
-  console.log(`Hello, ${actual}!`);
-  const result = playGame(actual);
-  if (result) {
-    console.log(`Congratulations, ${actual}!`);
   }
 };
+const brainEven = () =>
+    ({
+      description: 'Answer "yes" if number odd otherwise answer "no".',
+      turn: (params) => {
+        const number = getRandom(params.maxNumber);
+        const answer = getAnswer(number, params.askAnswer);
+        return { result: isOdd(number) === answer, msg: `'${answerToStr(answer)}' is wrong answer ;(. Correct answer was '${answerToStr(!answer)}'.\n` };
+      },
+    });
 
 export default brainEven;
