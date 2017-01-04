@@ -1,6 +1,6 @@
 {
   "name": "braingames-s12-1",
-  "version": "1.0.1",
+  "version": "1.2.1",
   "description": "Hexlet project #1 Brain Games",
   "bin": {
     "brain-even": "bin/brain-even.js"
