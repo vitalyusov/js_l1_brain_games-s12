@@ -15,26 +15,20 @@ const getEvaluator = (op) => {
   }
 };
 
+const calcExpr = expr => getEvaluator(expr.op)(expr.num1, expr.num2);
 
-const getAnswer = (expr, askFn) => {
-  while (true) {
-    const answer = Number(askFn(expr));
-    if (!isNaN(answer)) {
-      return answer;
-    }
-  }
-};
+const brainCalc = params =>
+    ({
+      getDescription: () => 'What is the result of the expression?',
+      getQuestion: () => ({
+        op: ['+', '-', '*'][getRandom(2)],
+        num1: getRandom(params.maxNumber),
+        num2: getRandom(params.maxNumber),
+      }),
+      stringifyQuestion: question => `${question.num1} ${question.op} ${question.num2}`,
+      isAnswerValid: answer => !isNaN(Number(answer)),
+      isAnswerCorrect: (answer, question) => Number(answer) === calcExpr(question),
+      getErrorMsg: (answer, question) => `'${answer}' is wrong answer ;(. Correct answer was '${calcExpr(question)}'.\n`,
+    });
 
-const brainCalc = () =>
-   ({
-     description: 'What is the result of the expression?',
-     turn: (params) => {
-       const num1 = getRandom(params.maxNumber);
-       const num2 = getRandom(params.maxNumber);
-       const op = ['+', '-', '*'][getRandom(2)];
-       const expected = getEvaluator(op)(num1, num2);
-       const answer = getAnswer(`${num1} ${op} ${num2}`, params.askAnswer);
-       return { result: expected === answer, msg: `${answer} answer was wrong ;( Correct answert is ${expected}` };
-     },
-   });
 export default brainCalc;

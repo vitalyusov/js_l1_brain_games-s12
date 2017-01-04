@@ -2,28 +2,16 @@
 
 import { getRandom } from '../index';
 
-const isOdd = num => (num % 2 === 0);
-const answerToStr = answer => (answer ? 'yes' : 'no');
-const getAnswer = (number, askFn) => {
-  while (true) {
-    const answer = askFn(number);
-    switch (answer) {
-      case 'yes':
-        return true;
-      case 'no':
-        return false;
-      default:
-    }
-  }
-};
-const brainEven = () =>
+const isOdd = num => (num % 2 === 0 ? 'yes' : 'no');
+
+const brainEven = params =>
     ({
-      description: 'Answer "yes" if number odd otherwise answer "no".',
-      turn: (params) => {
-        const number = getRandom(params.maxNumber);
-        const answer = getAnswer(number, params.askAnswer);
-        return { result: isOdd(number) === answer, msg: `'${answerToStr(answer)}' is wrong answer ;(. Correct answer was '${answerToStr(!answer)}'.\n` };
-      },
+      getDescription: () => 'Answer "yes" if number odd otherwise answer "no".',
+      getQuestion: () => getRandom(params.maxNumber),
+      stringifyQuestion: question => question,
+      isAnswerValid: answer => answer === 'yes' || answer === 'no',
+      isAnswerCorrect: (answer, question) => isOdd(question) === answer,
+      getErrorMsg: (answer, question) => `'${answer}' is wrong answer ;(. Correct answer was '${isOdd(question)}'.\n`,
     });
 
 export default brainEven;
