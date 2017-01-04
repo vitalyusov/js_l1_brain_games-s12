@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 // @flow
-import play from '../games/brain-even-game.js';
-
-console.log('Welcome to the Brain Games!');
-
-play();
+import brainEven from '../games/brain-even-game.js';
+import play from '../index.js';
+play(brainEven);
 
