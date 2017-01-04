@@ -1,44 +1,29 @@
 // @flow
 
-import readlineSync from 'readline-sync';
-import { answerTypeYN, reverseYNStr, answerToStr } from './brain-answers';
+import { getRandom } from '../index';
 
 const isOdd = num => (num % 2 === 0);
-const getAnswer = (number) => {
+const answerToStr = answer => (answer ? 'yes' : 'no');
+const getAnswer = (number, askFn) => {
   while (true) {
-    const answer = readlineSync.question(`Question: ${number}\nYour answer: `).toLowerCase();
+    const answer = askFn(number);
     switch (answer) {
       case 'yes':
         return true;
       case 'no':
         return false;
-      default:  
+      default:
     }
   }
-}
-const turn = (params) => {
-  
-    const number = Math.floor((Math.random() * params.maxNumber) + 1);
-    const answer = getAnswer(number);
-    
-    switch (isOdd(number) === answer) {
-      case true:
-        return {result: true}
-      case false:
-      default:
-        return {resul: false, msg: `'${answerToStr(answer)}' is wrong answer ;(. Correct answer was '${answerToStr(!answer)}'.\n`};
-    }
-
-  
 };
-
-const brainEven = () => {
-
-  return {
-    description: 'Answer "yes" if number odd otherwise answer "no".',
-    turn: turn
-
-  };
-}
+const brainEven = () =>
+    ({
+      description: 'Answer "yes" if number odd otherwise answer "no".',
+      turn: (params) => {
+        const number = getRandom(params.maxNumber);
+        const answer = getAnswer(number, params.askAnswer);
+        return { result: isOdd(number) === answer, msg: `'${answerToStr(answer)}' is wrong answer ;(. Correct answer was '${answerToStr(!answer)}'.\n` };
+      },
+    });
 
 export default brainEven;
