@@ -9,7 +9,7 @@ const calcGcd = (a, b) => {
   return calcGcd(b, a % b);
 };
 
-const brainEven = params =>
+const brainGcd = params =>
     ({
       getDescription: () => 'Find the greatest common divisor of given numbers.',
       getQuestion: () => ({
@@ -22,4 +22,4 @@ const brainEven = params =>
       getErrorMsg: (answer, q) => `'${answer}' is wrong answer ;(. Correct answer was '${calcGcd(q.num1, q.num2)}'.\n`,
     });
 
-export default brainEven;
+export default brainGcd;
