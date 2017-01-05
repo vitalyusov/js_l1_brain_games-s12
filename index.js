@@ -25,7 +25,7 @@ const play = (game) => {
       console.log('Correct!')
     } 
     else {
-      console.log(gameItem.getErrorMsg(answer, question));
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${gameItem.getCorrectAnswer(question)}'.\n`);
       console.log(`Let's try again, ${actual}`);
       return false;
     }

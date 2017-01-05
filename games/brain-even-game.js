@@ -11,7 +11,7 @@ const brainEven = params =>
       stringifyQuestion: question => question,
       isAnswerValid: answer => answer === 'yes' || answer === 'no',
       isAnswerCorrect: (answer, question) => isOdd(question) === answer,
-      getErrorMsg: (answer, question) => `'${answer}' is wrong answer ;(. Correct answer was '${isOdd(question)}'.\n`,
+      getCorrectAnswer: question => isOdd(question),
     });
 
 export default brainEven;

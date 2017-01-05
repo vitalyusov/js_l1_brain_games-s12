@@ -28,7 +28,7 @@ const brainCalc = params =>
       stringifyQuestion: question => `${question.num1} ${question.op} ${question.num2}`,
       isAnswerValid: answer => !isNaN(Number(answer)),
       isAnswerCorrect: (answer, question) => Number(answer) === calcExpr(question),
-      getErrorMsg: (answer, question) => `'${answer}' is wrong answer ;(. Correct answer was '${calcExpr(question)}'.\n`,
+      getCorrectAnswer: question => calcExpr(question),
     });
 
 export default brainCalc;
