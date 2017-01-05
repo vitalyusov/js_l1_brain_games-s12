@@ -19,7 +19,7 @@ const brainGcd = params =>
       stringifyQuestion: question => `${question.num1} ${question.num2}`,
       isAnswerValid: answer => !isNaN(Number(answer)),
       isAnswerCorrect: (answer, q) => Number(answer) === calcGcd(q.num1, q.num2),
-      getErrorMsg: (answer, q) => `'${answer}' is wrong answer ;(. Correct answer was '${calcGcd(q.num1, q.num2)}'.\n`,
+      getCorrectAnswer: q => calcGcd(q.num1, q.num2),
     });
 
 export default brainGcd;
