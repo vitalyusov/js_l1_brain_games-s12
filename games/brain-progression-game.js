@@ -6,7 +6,7 @@ const range = (start, size) => [...Array(size).keys()].map(item => item + start)
 const genProgression = (start, step, size) =>
   range(start, size * step).filter((_, idx) => idx % step === 0);
 
-const brainEven = params =>
+const brainProgression = params =>
     ({
       getDescription: () => 'What number is missing in this progression?',
       getQuestion: () => {
@@ -27,4 +27,4 @@ const brainEven = params =>
       getCorrectAnswer: question => question.prog[question.idx],
     });
 
-export default brainEven;
+export default brainProgression;
